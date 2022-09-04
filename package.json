@@ -1,0 +1,26 @@
+{
+  "name": "bloc-vue-3-clean-pattern",
+  "version": "1.0.0",
+  "description": "![Moving away from the framework](https://raw.githubusercontent.com/shamscorner/images/main/bloc-pattern.png)",
+  "private": true,
+  "workspaces": [
+    "core",
+    "vue3-app"
+  ],
+  "devDependencies": {},
+  "scripts": {
+    "build": "cd core && yarn build",
+    "dev": "cd vue3-app && yarn dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shamscorner/bloc-vue-3-clean-pattern.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shamscorner/bloc-vue-3-clean-pattern/issues"
+  },
+  "homepage": "https://github.com/shamscorner/bloc-vue-3-clean-pattern#readme"
+}

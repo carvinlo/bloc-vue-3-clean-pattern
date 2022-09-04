@@ -118,47 +118,12 @@ These are the advantages you will encounter while developing your project.
 $ git clone https://github.com/shamscorner/bloc-vue-3-clean-pattern.git [your repo name]
 ```
 
-**step 2** - setup `core`
+**step 2** - build & dev
 
 ```
-$ cd core
-$ pnpm install
-$ pnpm build
-$ yalc publish
-```
-
-**note:** install [pnpm](https://pnpm.io/) and [yalc](https://www.npmjs.com/package/yalc)
-
-**step 3** - setup `vue app`
-
-```
-$ cd vue3-app
-$ pnpm install
-$ yalc add pkg-bloc-core
-$ pnpm install
-```
-
-Checkout [this article](https://www.viget.com/articles/how-to-use-local-unpublished-node-packages-as-project-dependencies/) if you want some more in-depth explanation.
-
-**step 4** - running the app
-
-```
-$ pnpm dev
-```
-
-### If you want to make some changes to the `core` folder, then you have to do the following after each changes.
-
-```
-$ cd core
-$ pnpm build
-$ yalc push
-```
-
-and in the vue app, restart the server. If that doesn't work, then run this command as well.
-
-```
-$ cd vue3-app
-$ yalc update
+$ npm i
+$ npm run build
+$ npm run dev
 ```
 
 Happy Coding :)
