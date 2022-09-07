@@ -3,7 +3,7 @@ import { Either } from "../../common/domain/Either";
 import { Product } from "../domain/entities/Product";
 import { ProductRepository } from "../domain/repositories/ProductRepository";
 
-const products = [
+export const products = [
 	{
 		id: "1",
 		image: "https://images-na.ssl-images-amazon.com/images/I/71Y1S1m-QAL._AC_UY879_.jpg",

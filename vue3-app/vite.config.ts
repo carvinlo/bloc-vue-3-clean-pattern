@@ -14,10 +14,11 @@ import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Inspect from 'vite-plugin-inspect'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
+import { viteMockServe } from 'vite-plugin-mock'
 
 const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,
@@ -26,6 +27,11 @@ export default defineConfig({
   plugins: [
     Vue({
       include: [/\.vue$/, /\.md$/],
+    }),
+
+    viteMockServe({
+      mockPath: '../core/src/mock',
+      localEnabled: command === 'serve',
     }),
 
     // https://github.com/hannoeru/vite-plugin-pages
@@ -170,4 +176,4 @@ export default defineConfig({
       'vue-demi',
     ],
   },
-})
+}))

@@ -76,9 +76,12 @@ Mocking up web app with <b>Vitesse</b><sup><em>(speed)</em></sup><br> with modul
   - [`markdown-it-prism`](https://github.com/jGleitz/markdown-it-prism) - [Prism](https://prismjs.com/) for syntax highlighting
   - [`prism-theme-vars`](https://github.com/antfu/prism-theme-vars) - customizable Prism.js theme using CSS variables
 - [Vue I18n](https://github.com/intlify/vue-i18n-next) - Internationalization
-  - [`vite-plugin-vue-i18n`](https://github.com/intlify/vite-plugin-vue-i18n) - Vite plugin for Vue I18n
+  - [`@intlify/vite-plugin-vue-i18n`](https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n) - Vite plugin for Vue I18n
 - [VueUse](https://github.com/antfu/vueuse) - collection of useful composition APIs
 - [`@vueuse/head`](https://github.com/vueuse/head) - manipulate document head reactively
+- [`rollup-plugin-svg-sprites`](https://github.com/godxiaoji/rollup-plugin-svg-sprites) - for creating SVG sprites
+- [`@rollup/plugin-inject`](https://github.com/rollup/plugins/tree/master/packages/inject) - global variables and injects `import` statements where necessary
+- [`vite-plugin-mock`](https://github.com/vbenjs/vite-plugin-mock) - A mock plugin for vite.use mockjs.
 
 ### Coding Style
 
@@ -111,6 +114,7 @@ As this template is strongly opinionated, the following provides a curated list 
 - [vitesse-nuxt](https://github.com/antfu/vitesse-nuxt) - Vitesse experience for Nuxt 2
 
 ###### Community
+
 - [vitesse-addons](https://github.com/JohnCampionJr/vitesse-addons) by [@johncampionjr](https://github.com/johncampionjr) - additional options for integrations, including [Prettier](https://prettier.io) and [Storybook](https://storybook.js.org)
 - [vitesse-ssr-template](https://github.com/frandiox/vitesse-ssr-template) by [@frandiox](https://github.com/frandiox) - Vitesse with SSR
 - [vitespa](https://github.com/ctholho/vitespa) by [@ctholho](https://github.com/ctholho) - Like Vitesse but without SSG/SSR
@@ -168,10 +172,10 @@ And you will see the generated file in `dist` that ready to be served.
 
 - Create separate folder for each module and place them under `/src` folder
 - The following folders are auto imported within each module
-    - `components/`
-    - `modules/`
-    - `pages/`
-    - `stores/`
+  - `components/`
+  - `modules/`
+  - `pages/`
+  - `stores/`
 - Place all the layouts in the `common/layouts` folder
 - Place all the custom styles in the `common/styles` folder and import them into `main.css`
 
