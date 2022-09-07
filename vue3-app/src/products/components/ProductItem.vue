@@ -4,7 +4,7 @@
     <div class="text-lg">{{ props.product.title }}</div>
     <div class="text-sm text-gray-400">
       {{ formatCurrency(props.product.price) }}
-      <VButtonText @click="handleAddToCart">Add to Cart</VButtonText>
+      <VButtonText @click="handleAddToCart">{{t('button.add_to_cart')}}</VButtonText>
       <span v-if="isAddedToCart" class="text-green-500">Added</span>
     </div>
   </div>
@@ -13,6 +13,7 @@
 <script setup lang="ts">
 import { CartPloc } from 'pkg-bloc-core'
 import { formatCurrency } from '~/common/logic'
+const { t } = useI18n()
 
 interface Props {
   product: {

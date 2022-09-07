@@ -1,18 +1,36 @@
+/* eslint-disable import/order */
+/* eslint-disable @typescript-eslint/semi */
+/* eslint-disable semi */
 import { createI18n } from 'vue-i18n'
 import { UserModule } from '~/types'
+import deepmerge from 'deepmerge';
 
 // Import i18n resources
 // https://vitejs.dev/guide/features.html#glob-import
 //
 // Don't need this? Try vitesse-lite: https://github.com/antfu/vitesse-lite
-const messages = Object.fromEntries(
-  Object.entries(
-    import.meta.globEager('../../../locales/*.y(a)?ml'))
-    .map(([key, value]) => {
-      const yaml = key.endsWith('.yaml')
-      return [key.slice(17, yaml ? -5 : -4), value.default]
-    }),
-)
+// note: now import is not dynamic, so all language files are loaded at once
+const modules = import.meta.globEager('../../../**/locales/*.y(a)?ml', { assert: { type: 'yaml' } })
+
+const setValueByPath = (obj: any, path: string, value: any, splitChar = '.') => {
+  const language = path.split(splitChar).pop() as string;
+  obj[language] = deepmerge(obj[language], value)
+}
+
+const cleanupKey = (key: string) => {
+  // ../../../**/locales/en.yml -> en.yml
+  key = key.substring(17)
+  return key.substring(0, key.indexOf('.'))
+}
+
+const final = {}
+// eslint-disable-next-line no-restricted-syntax
+for (const key in modules) {
+  const path = cleanupKey(key)
+  setValueByPath(final, path, modules[key].default, '/')
+}
+
+export const messages = final
 
 export const install: UserModule = ({ app }) => {
   const i18n = createI18n({

@@ -10,6 +10,7 @@
   "dependencies": {
     "@vueuse/core": "^6.4.1",
     "@vueuse/head": "^0.6.0",
+    "deepmerge": "^4.2.2",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.0-rc.9",
     "pkg-bloc-core": "1.0.0",
