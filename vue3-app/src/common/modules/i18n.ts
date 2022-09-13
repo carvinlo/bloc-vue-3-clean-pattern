@@ -12,14 +12,14 @@ import deepmerge from 'deepmerge';
 // note: now import is not dynamic, so all language files are loaded at once
 const modules = import.meta.globEager('../../../**/locales/*.y(a)?ml', { assert: { type: 'yaml' } })
 
-const setValueByPath = (obj: any, path: string, value: any, splitChar = '.') => {
-  const language = path.split(splitChar).pop() as string;
+const setValueByPath = (obj: any, path: string, value: any) => {
+  const language = path.split('/').pop()?.split('.').shift() as string;
   obj[language] = deepmerge(obj[language], value)
 }
 
 const final = {}
 // eslint-disable-next-line no-restricted-syntax
-for (const path in modules) setValueByPath(final, path, modules[path].default, '/')
+for (const path in modules) setValueByPath(final, path, modules[path].default)
 
 export const messages = final
 
