@@ -12,30 +12,14 @@ import deepmerge from 'deepmerge';
 // note: now import is not dynamic, so all language files are loaded at once
 const modules = import.meta.globEager('../../../**/locales/*.y(a)?ml', { assert: { type: 'yaml' } })
 
-const setValueByPath = (obj: any, scope: string, language: string, value: any) => {
-  if (!(language in obj)) obj[language] = {};
-
-  if (!scope.includes('.')) {
-    if (!(scope in obj[language])) obj[language][scope] = {};
-    obj[language][scope] = deepmerge(obj[language][scope], value)
-    return;
-  }
+const setValueByPath = (obj: any, path: string, value: any, splitChar = '.') => {
+  const language = path.split(splitChar).pop() as string;
   obj[language] = deepmerge(obj[language], value)
-}
-
-const cleanupKey = (key: string): Array<string> => {
-  // ../../../src/products/locales/en.yml -> en.yml
-  const keys = key.split('/locales/')
-  if (keys.length !== 2) return ['', ''];
-  return [keys[0].split('/').pop() as string, keys[1].substring(0, keys[1].indexOf('.'))];
 }
 
 const final = {}
 // eslint-disable-next-line no-restricted-syntax
-for (const key in modules) {
-  const [scope, language] = cleanupKey(key)
-  setValueByPath(final, scope, language, modules[key].default)
-}
+for (const path in modules) setValueByPath(final, path, modules[path].default, '/')
 
 export const messages = final
 
